@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using CRUDelicious.Models;
 
+
 namespace CRUDelicious.Controllers;
 
 public class HomeController : Controller
@@ -12,10 +13,10 @@ public class HomeController : Controller
     {
         _logger = logger;
     }
-
+    [HttpGet("")]
     public IActionResult Index()
     {
-        return View();
+        return RedirectToAction("AllDishes", "Dish");
     }
 
     public IActionResult Privacy()

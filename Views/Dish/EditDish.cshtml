@@ -1,26 +1,26 @@
 @model Dish
 @{
-    ViewData["Title"] = "New Dish";
+    ViewData["Title"] = "Edit Dish";
 }
-<h1>Add a New Dish</h1>
+<h1>Edit a Dish</h1>
 
-<form asp-action="CreateDish" asp-controller="Dish" method="POST" class="shadow p-3 rounded">
+<form asp-action="EditDish" asp-route-dishId="@Model.DishId" asp-controller="Dish" method="POST" class="shadow p-3 rounded">
     <div class="d-flex justify-content-center">
         @* col one *@
         <div class="mx-2">
             <div class="mb-5">
                 <label asp-for="Chef">Chef's Name:</label>
-                <input asp-for="Chef" class="form-control">
+                <input asp-for="Chef" value="@Model.Chef" class="form-control">
                 <span class="text-danger" asp-validation-for="Chef"></span>
             </div>
             <div class="mb-5">
                 <label asp-for="Name"></label>
-                <input asp-for="Name" class="form-control">
+                <input asp-for="Name" value="@Model.Name" class="form-control">
                 <span class="text-danger" asp-validation-for="Name"></span>
             </div>
             <div class="mb-5">
                 <label asp-for="Calories">Calories:</label>
-                <input asp-for="Calories" class="form-control">
+                <input asp-for="Calories" value="@Model.Calories" class="form-control">
                 <span class="text-danger" asp-validation-for="Calories"></span>
             </div>
         </div>
@@ -43,14 +43,15 @@
                 <label asp-for="Description"></label>
             </div>
             <div>
-                <input asp-for="Description">
+                <textarea asp-for="Description" value="@Model.Description"></textarea>
+
                 
             </div>
             <div>
                 <span class="text-danger" asp-validation-for="Description"></span>
             </div>
             <div class="d-flex justify-content-end">
-                <button>Add Dish</button>
+                <button>Edit Dish</button>
             </div>
             
         </div>
