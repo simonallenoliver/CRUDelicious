@@ -21,7 +21,8 @@ public class DishController : Controller
     [HttpGet("dishes/new")]
     public ViewResult NewDish() 
     {
-        return View();
+        List<Chef> ChefsFromDB = _context.Chefs.OrderByDescending(c => c.CreatedAt).ToList();
+        return View("NewDish", ChefsFromDB);
     }
 
 // this is the post route for our form

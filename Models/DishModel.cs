@@ -9,11 +9,11 @@ public class Dish
     [Display(Name = "Name of Dish: ")]
     [Required(ErrorMessage = "Hey this field is required!")]
     public string? Name { get; set; }
-
-    [Display(Name = "Chef's Name: ")]
+    
+    [Display(Name = "Name of Chef: ")]
     [Required(ErrorMessage = "Hey this field is required!")]
     public string? Chef { get; set; }
-    
+
     public int Tastiness { get; set; }
     [Required(ErrorMessage = "Hey this field is required!")]
     [Range(1, int.MaxValue, ErrorMessage = "Calories must be at least 1")]
@@ -25,5 +25,9 @@ public class Dish
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
+    public int ChefId { get; set; }
 
+    // Our navigation property to track which Chef made this Post
+    // It is VERY important to include the ? on the datatype or this won't work!
+    public Chef? Creator { get; set; }
 }

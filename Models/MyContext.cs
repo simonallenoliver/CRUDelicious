@@ -12,5 +12,7 @@ public class MyContext : DbContext
     // We need to create a new DbSet<Model> for every model in our project that is making a table
     // The name of our table in our database will be based on the name we provide here
     // This is where we provide a plural version of our model to fit table naming standards    
-    public DbSet<Dish> Dishes { get; set; } 
+    public DbSet<Dish> Dishes { get; set; }
+    public DbSet<Chef> Chefs { get; set; }
+
 }

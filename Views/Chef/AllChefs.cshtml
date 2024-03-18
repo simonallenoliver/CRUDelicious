@@ -1,0 +1,24 @@
+
+@{
+    ViewData["Title"] = "All Dishes";
+}
+@model List<Chef>
+
+
+
+    <table>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Number of dishes</th>
+    </tr>
+    @foreach (Chef c in Model)
+    {
+    <tr>
+        <td>@c.FirstName @c.LastName</td>
+        <td>@c.BirthDate</td>
+        <td>@c.AllDishes.Count</td>
+    </tr>
+    }
+    </table>
+    @* could also just write it out as a string as we have before *@
