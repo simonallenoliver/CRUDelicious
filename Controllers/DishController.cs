@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using CRUDelicious.Models;
 using System.Globalization;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Microsoft.EntityFrameworkCore;
 
 namespace CRUDelicious.Controllers;
 
@@ -21,8 +22,8 @@ public class DishController : Controller
     [HttpGet("dishes/new")]
     public ViewResult NewDish() 
     {
-        List<Chef> ChefsFromDB = _context.Chefs.OrderByDescending(c => c.CreatedAt).ToList();
-        return View("NewDish", ChefsFromDB);
+        ViewBag.ChefNames = _context.Chefs.OrderBy(c => c.LastName).ToList();
+        return View("NewDish");
     }
 
 // this is the post route for our form
@@ -48,7 +49,7 @@ public IActionResult CreateDish(Dish newDish)
     [HttpGet("dishes")]
     public ViewResult AllDishes()
     {
-        List<Dish> DishesFromDB = _context.Dishes.OrderByDescending(d => d.CreatedAt).ToList();
+        List<Dish> DishesFromDB = _context.Dishes.Include(d => d.Creator).ToList();
         
         return View("AllDishes", DishesFromDB);
     }
@@ -70,6 +71,7 @@ public IActionResult CreateDish(Dish newDish)
     [HttpGet("dishes/{dishId}/edit")]
     public IActionResult EditDish(int dishId)
     {
+        ViewBag.ChefNames = _context.Chefs.OrderBy(c => c.LastName).ToList();
         Dish? OneDish = _context.Dishes.FirstOrDefault(d => d.DishId == dishId);
         if(OneDish == null)
         {
@@ -86,7 +88,6 @@ public IActionResult CreateDish(Dish newDish)
         if (ModelState.IsValid)
         {
             OneDish.Name = newDish.Name;
-            OneDish.Chef = newDish.Chef;
             OneDish.Calories = newDish.Calories;
             OneDish.Tastiness = newDish.Tastiness;
             OneDish.Description = newDish.Description;

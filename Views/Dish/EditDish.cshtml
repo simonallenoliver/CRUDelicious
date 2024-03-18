@@ -9,9 +9,15 @@
         @* col one *@
         <div class="mx-2">
             <div class="mb-5">
-                <label asp-for="Chef">Chef's Name:</label>
-                <input asp-for="Chef" value="@Model.Chef" class="form-control">
-                <span class="text-danger" asp-validation-for="Chef"></span>
+                <label asp-for="ChefId">Chef's Name:</label>
+                
+                
+                <Select asp-for="ChefId" class="">
+                    @foreach (Chef c in @ViewBag.ChefNames)
+                {
+                    <option value = "@c.ChefId"  >@c.FirstName @c.LastName</option>
+                }
+                </Select>
             </div>
             <div class="mb-5">
                 <label asp-for="Name"></label>

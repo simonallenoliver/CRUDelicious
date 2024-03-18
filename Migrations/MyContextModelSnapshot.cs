@@ -25,8 +25,8 @@ namespace CRUDelicious.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateOnly>("BirthDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
@@ -59,10 +59,6 @@ namespace CRUDelicious.Migrations
                     b.Property<int?>("Calories")
                         .IsRequired()
                         .HasColumnType("int");
-
-                    b.Property<string>("Chef")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.Property<int>("ChefId")
                         .HasColumnType("int");

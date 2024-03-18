@@ -10,9 +10,6 @@ public class Dish
     [Required(ErrorMessage = "Hey this field is required!")]
     public string? Name { get; set; }
     
-    [Display(Name = "Name of Chef: ")]
-    [Required(ErrorMessage = "Hey this field is required!")]
-    public string? Chef { get; set; }
 
     public int Tastiness { get; set; }
     [Required(ErrorMessage = "Hey this field is required!")]

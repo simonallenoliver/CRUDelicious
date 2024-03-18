@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRUDelicious.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20240318180015_FirstMigrationPlease")]
-    partial class FirstMigrationPlease
+    [Migration("20240318203807_migratenowplzzz")]
+    partial class migratenowplzzz
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,8 +27,8 @@ namespace CRUDelicious.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("BirthDate")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
@@ -61,10 +61,6 @@ namespace CRUDelicious.Migrations
                     b.Property<int?>("Calories")
                         .IsRequired()
                         .HasColumnType("int");
-
-                    b.Property<string>("Chef")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.Property<int>("ChefId")
                         .HasColumnType("int");

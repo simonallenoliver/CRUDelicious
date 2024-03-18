@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using CRUDelicious.Models;
 using System.Globalization;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Microsoft.EntityFrameworkCore;
 
 namespace CRUDelicious.Controllers;
 
@@ -47,7 +48,7 @@ public IActionResult AddChef(Chef newChef)
     [HttpGet("chefs")]
     public ViewResult AllChefs()
     {
-        List<Chef> ChefsFromDB = _context.Chefs.OrderByDescending(c => c.CreatedAt).ToList();
+        List<Chef> ChefsFromDB = _context.Chefs.Include(c => c.AllDishes).ToList();
         
         return View("AllChefs", ChefsFromDB);
     }

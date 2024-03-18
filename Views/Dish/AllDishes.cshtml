@@ -3,8 +3,22 @@
 }
 @model List<Dish>
 
-@foreach (Dish d in Model)
-{
-    <h3><a asp-action="ViewDish" asp-route-dishId="@d.DishId">@d.Name</a> by @d.Chef</h3>
-    @* could also just write it out as a string as we have before *@
-}
+<h1>Yum! Check out our tasty dishes!</h1>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Chef</th>
+        <th>Tastiness</th>
+        <th>Calories</th>
+    </tr>
+    @foreach (Dish d in Model)
+    {
+    <tr>
+        <td>@d.Name </td>
+        <td>@d.Creator.FirstName @d.Creator.LastName</td>
+        <td>@d.Tastiness</td>
+        <td>@d.Calories</td>
+    </tr>
+    }
+    </table>

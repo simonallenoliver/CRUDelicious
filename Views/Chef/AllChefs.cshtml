@@ -4,9 +4,9 @@
 }
 @model List<Chef>
 
+<h1>Check out our roster of chefs!</h1>
 
-
-    <table>
+    <table class="table">
     <tr>
         <th>Name</th>
         <th>Age</th>
@@ -16,7 +16,7 @@
     {
     <tr>
         <td>@c.FirstName @c.LastName</td>
-        <td>@c.BirthDate</td>
+        <td>@(DateTime.Today.Year - c.BirthDate.Year)</td>
         <td>@c.AllDishes.Count</td>
     </tr>
     }
